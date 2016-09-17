@@ -1,3 +1,5 @@
+# An example of using superkeys to drop TNT in Minecraft when T is pressed
+
 from superkeys import *
 from mcpi.minecraft import Minecraft
 from mcpi import block
