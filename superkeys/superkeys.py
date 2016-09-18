@@ -64,7 +64,7 @@ class Key():
 
 def is_key_pressed(what_key):
     what_key = "KEY_" + what_key.upper()
-    return (key.get(what_key, 0) != 0)
+    return (key_state.get(what_key, 0) != 0)
 
 key_a = Key("A")
 key_b = Key("B")
@@ -118,5 +118,6 @@ if __name__ == "__main__":
     key_a.when_pressed = myfunction
     
     while True:
-        print("a {}".format(key_a.state))
+        print("a state {}".format(key_a.state))
+        print("b is pressed {}".format(is_key_pressed("b")))
         sleep(1)
