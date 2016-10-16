@@ -1,0 +1,35 @@
+Metadata-Version: 1.1
+Name: superkeys
+Version: 0.0.1
+Summary: A super simple module for knowing when keys are pressed.
+Home-page: https://github.com/martinohanlon/superkeys
+Author: Martin O'Hanlon
+Author-email: martin@ohanlonweb.com
+License: MIT
+Description: # superkeys
+        A 'super' simple module for reading when keys are pressed.
+        
+        This module was created at PyConUK 2016 at the request of a code club teacher whose students wanted to add extra keyboard functions when playing Minecraft: Pi Edition.
+        
+        ##Version
+        
+        beta - not finished, barely started, but works
+        
+        ##Documentation
+        
+        Currently non-existant.
+        
+        
+Keywords: keyboard reader
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5

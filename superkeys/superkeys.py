@@ -1,21 +1,47 @@
 from inputs import get_key
-from _thread import start_new_thread
 from time import sleep
+from threading import Thread
+import atexit
 
 key_refs = {}
 key_state = {}
 
-def get_all_keys():
-    while True:
-        events = get_key()
-        for event in events:
-            if event.ev_type == "Key":
-                for key_ref in key_refs[event.code]:
-                    key_ref.state = event.state
-                key_state[event.code] = event.state
-        sleep(0.01)
+class KeyListener(Thread):
+    def __init__(self):
+        #setup threading
+        Thread.__init__(self)
+        self.running = False
+        self.stopped = False
+       
+    def run(self):
+        self.running = True
+        self.stopped = False
+        while not self.stopped:
+            events = get_key()
+            if events:
+                for event in events:
+                    if event.ev_type == "Key":
+                        for key_ref in key_refs[event.code]:
+                            key_ref.state = event.state
+                        key_state[event.code] = event.state
+            sleep(0.01)
 
-start_new_thread(get_all_keys, ())
+        self.running = False
+        
+    def stop(self):
+        self.stopped = False
+        while self.running:
+            sleep(0.01)
+            
+    def __del__(self):
+        self.stop()
+
+# start the key listener
+kl = KeyListener()
+kl.start()
+
+# register it to stop at exit
+atexit.register(kl.stop)
 
 class Key():
     def __init__(self, key):
@@ -109,7 +135,7 @@ key_esc = Key("ESC")
 key_leftctrl = Key("LEFTCTRL")
 key_rightctrl = Key("RIGHTCTRL")
 
-
+#test
 if __name__ == "__main__":
     
     def myfunction():
@@ -120,4 +146,5 @@ if __name__ == "__main__":
     while True:
         print("a state {}".format(key_a.state))
         print("b is pressed {}".format(is_key_pressed("b")))
-        sleep(1)
+        sleep(0.5)
+        
