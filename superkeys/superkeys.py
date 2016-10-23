@@ -36,13 +36,6 @@ class KeyListener(Thread):
     def __del__(self):
         self.stop()
 
-# start the key listener
-kl = KeyListener()
-kl.start()
-
-# register it to stop at exit
-atexit.register(kl.stop)
-
 class Key():
     def __init__(self, key):
         self.key = key
@@ -92,6 +85,12 @@ def is_key_pressed(what_key):
     what_key = "KEY_" + what_key.upper()
     return (key_state.get(what_key, 0) != 0)
 
+# start the key listener
+kl = KeyListener()
+kl.start()
+
+# register it to stop at exit
+atexit.register(kl.stop)
 key_a = Key("A")
 key_b = Key("B")
 key_c = Key("C")
@@ -147,4 +146,3 @@ if __name__ == "__main__":
         print("a state {}".format(key_a.state))
         print("b is pressed {}".format(is_key_pressed("b")))
         sleep(0.5)
-        
