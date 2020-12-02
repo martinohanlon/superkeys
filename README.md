@@ -1,3 +1,5 @@
+**This repository and project has now been archived and is no longer supported. The code will remain available for reference and information.**
+
 # superkeys
 A 'super' simple module for reading when keys are pressed.
 
